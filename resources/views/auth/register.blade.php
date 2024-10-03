@@ -42,8 +42,36 @@
                             type="password"
                             name="password_confirmation" required autocomplete="new-password" />
 
+
+
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
+
+        <div class="mt-4">
+            <x-input-label for="Ville" :value="__('Ville')" />
+
+            <x-text-input id="ville" class="block mt-1 w-full"
+                            type="text"
+                            name="ville"/>
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="Date de Naissance" :value="__('DateNaiss')" />
+
+            <x-text-input id="dateNaissance" class="block mt-1 w-full"
+                            type="date"
+                            name="dateNaissance"/>
+        </div>
+
+        <div class="mt-4">
+            <x-input-label for="Genre" :value="__('Genre')" />
+
+            <select name="genre" >
+                <option>Homme</option>
+                <option>Femme</option>
+            </select>
+        </div>
+
 
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('login') }}">

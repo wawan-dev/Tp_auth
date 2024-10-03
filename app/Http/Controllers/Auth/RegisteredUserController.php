@@ -30,11 +30,16 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'psedo' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'ville' => ['required', 'string', 'max:255'],
+            'genre' => ['required', 'string',],
+            'dateNaissance' => ['required', 'date',],
+
         ]);
 
         $user = User::create([
@@ -44,14 +49,21 @@ class RegisteredUserController extends Controller
             'psedo'=>$request->psedo,
         ]);
 
-        $personne =Personne::create([
+        $personne = Personne::create([
             'name' => $request->name,
+            'ville' => $request->ville,
+            'dateNaissance' => $request->dateNaissance,
+            'genre' => $request->genre,
             'userId' => $user->id
+            
         ]);
 
         event(new Registered($user));
 
         Auth::login($user);
+
+        // Après la création de l'utilisateur (role user)
+        $user->roles()->attach(2);
 
         return redirect(route('dashboard', absolute: false));
     }

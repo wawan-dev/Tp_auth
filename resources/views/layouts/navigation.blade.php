@@ -20,7 +20,13 @@
                         {{ __('Dashboard') }}
                     </x-nav-link>
 
+                    <x-nav-link :href="route('roles')" :active="request()->routeIs('roles')">
+                        {{ __('Dashboard') }}
+                    </x-nav-link>
+
                 </div>
+
+                
             </div>
 
             <!-- Settings Dropdown -->

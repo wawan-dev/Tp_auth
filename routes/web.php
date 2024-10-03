@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PersonneControler;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\YoloControler;
+use App\Models\Personne;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -22,6 +24,11 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/yolo',[YoloControler::class, 'publicView']);
 Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard');
+Route::get('/personne/{personne}',[PersonneControler::class, 'index'])->name('personneparid');
+Route::get('/personne',[PersonneControler::class, 'allpersonne'])->name('allpersonne');
+
+Route::get('/roles',[DashboardController::class, 'roles']);
+
 
 
 
