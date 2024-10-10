@@ -19,5 +19,5 @@ class DashboardController extends Controller
     {
         $roles = Auth::User()->roles;
         return view('roles', ['roles' => $roles]);
-    }
+    }  
 }

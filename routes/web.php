@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PersonneControler;
 use App\Http\Controllers\ProfileController;
@@ -27,7 +28,10 @@ Route::get('/dashboard',[DashboardController::class, 'index'])->name('dashboard'
 Route::get('/personne/{personne}',[PersonneControler::class, 'index'])->name('personneparid');
 Route::get('/personne',[PersonneControler::class, 'allpersonne'])->name('allpersonne');
 
-Route::get('/roles',[DashboardController::class, 'roles']);
+Route::get('/roles',[DashboardController::class, 'roles'])->name('roles');
+
+Route::get('/chat',[ChatController::class, 'Chat'])->name('chat');
+Route::post('/chat/ajout/{id}',[ChatController::class, 'Ajout'])->name('ajout');
 
 
 
