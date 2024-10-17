@@ -31,7 +31,9 @@ Route::get('/personne',[PersonneControler::class, 'allpersonne'])->name('allpers
 Route::get('/roles',[DashboardController::class, 'roles'])->name('roles');
 
 Route::get('/chat',[ChatController::class, 'Chat'])->name('chat');
+Route::get('/getMessages',[ChatController::class, 'Message']);
 Route::post('/chat/ajout/{id}',[ChatController::class, 'Ajout'])->name('ajout');
+
 
 
 

@@ -19,13 +19,27 @@
                     </form>
                     
                 </div>
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                @foreach ($messages as $m)
-                    <p style="background-color: lightgrey;">{{$m -> text}}</p>
-                    <br>
-                @endforeach
+                <div id ='lechat' class="p-6 text-gray-900 dark:text-gray-100">
+                
                 </div>
             </div>
         </div>
     </div>
 </x-app-layout>
+<script>
+    function getMessages() {
+        fetch('/getMessages')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('lechat').innerHTML = html;
+            });
+    }
+
+    setInterval(() => {
+        getMessages();    
+    }, 3000);
+
+    document.addEventListener('DOMContentLoaded', function() {
+        getMessages();
+    });
+</script>
